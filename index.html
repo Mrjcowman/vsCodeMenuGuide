@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VS Code Context Menu Guide</title>
+
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .key {
+            border: 1px solid black;
+            border-radius: 4px;
+            background-color: #444;
+            color: white;
+
+            padding: 0 0.25em;
+        }
+
+        .nosep {
+            white-space: nowrap;
+        }
+
+        :target {
+            display: block;
+            position: relative;
+            top: -40px; 
+            visibility: hidden;
+        }
+    </style>
+
+    <!-- JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</head>
+<body class="bg-dark">
+
+    <nav class="navbar navbar-dark bg-primary navbar-expand-md fixed-top">
+        <a href="#" class="navbar-brand">VS Code Context Menu Guide</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"  aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a href="#step1" class="nav-link">Step 1</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#step2" class="nav-link">Step 2</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#step3" class="nav-link">Step 3</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#step4" class="nav-link">Step 4</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#step5" class="nav-link">Step 5</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#extra" class="nav-link">Extra</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div style="height:40px"></div>
+
+    <main class="container">
+
+        <div class="row">
+            <section class="col-md-8 bg-light p-2 my-4 rounded">
+                <h2 class="text-light bg-dark p-2 rounded">How to set up a VS Code shortcut on Windows</h2>
+                <img src="assets/contextMenu.png" alt="" class="fluid-img float-left mr-2">
+                <p>This quick walkthrough will show you how to make an option in your right-click context menu that functions the same as our "code ." command in git bash. This will make your life much easier when navigating some complex folder structures like the class gitlab repository.</p>
+                <p><strong class="text-danger">Warning:</strong> This requires that you make some simple changes to your Windows Registry. If you are uncomfortable with making these registry edits, please do not attempt to follow this guide. Changing the wrong fields of the registry can damage your installation of Windows. You have been warned.</p>
+            </section>
+        </div>
+
+        <a href="" id="step1"></a>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <section class="col-md-10 bg-light p-2 my-4 rounded">
+                <h3>Step 1: Locate your VS Code installation</h3>
+                <div class="row">
+                    <div class="col-sm-8">
+                        <img src="assets/path.png" alt="" class="fluidImg w-100 mb-2">
+                        <p>If you're unsure of where your copy of VS Code is located, you can find it easily by right-clicking on your VS Code shortcut—on your desktop, taskbar, or start menu—and selecting "Open File Locaton".</p>
+                        <p>If this brings you to another shortcut, simply repeat the process on the new shortcut until you reach your VS Code executable. <strong>Make note of this path.</strong> In my example, the path is <strong class="text-primary nosep">D:\Program Files\Microsoft VS Code\Code.exe</strong></p>
+                    </div>
+                    <div class="col-sm-4">
+                        <img src="assets/openFileLocation.png" alt="" class="fluid-img w-100">
+                    </div>
+                </div>                
+            </section>
+        </div>
+        
+        <a href="" id="step2"></a>
+        <div class="row">
+            <section class="col-md-8 bg-light p-2 my-4 rounded">
+                <h3>Step 2: Open Registry Editor</h3>
+                <img src="assets/runRegedit.png" alt="" class="fluid-img w-100 mb-2">
+                <p>To open the registry editor, hit 
+                    <span class="nosep"><span class="key">⊞ Win</span> + <span class="key">R</span></span>
+                    and it should open a run prompt as shown above. Type in "regedit" and hit OK to open the registry editor.
+                </p>
+            </section>
+        </div>
+        
+        <a href="" id="step3"></a>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <section class="col-8 bg-light p-2 my-4 rounded">
+                <h3>Step 3: Navigate to shell settings in registry</h3>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <img src="assets/regeditRoot.png" alt="" class="fluid-img w-100 mb-2">
+                    </div>
+                    <div class="col-sm-6">
+                        <img src="assets/regeditShellPath.png" alt="" class="fluid-img w-100 mb-2">
+                    </div>
+                </div>
+                <p>Inside your registry, navigate to <strong class="text-primary">Computer\HKEY_CLASSES_ROOT\Directory\Background\shell</strong></p>
+                <p>(Be sure you are looking past the registry keys that start with ".")</p>
+            </section>
+        </div>
+        
+        <a href="" id="step4"></a>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <section class="col-8 bg-light p-2 my-4 rounded">
+                <h3>Step 4: Create a new key for VS Code</h3>
+                
+                <img src="assets/regeditMakeNewKey.png" alt="" class="fluid-img w-100 mb-2">
+                
+                <p>Right-click on the shell folder and select <strong class="nosep text-info">New &rarr; Key</strong>. Name this key something logical, like "VS_Code". Then, right-click on your new key and create yet another key inside this one; call this child key "command"</p>
+            </section>
+        </div>
+        
+        <a href="" id="step5"></a>
+        <div class="row">
+            <section class="col-8 bg-light p-2 my-4 rounded">
+                <h3>Step 5: Edit the command string</h3>
+                
+                <img src="assets/commandString.png" alt="" class="fluid-img w-100 mb-2">
+                
+                <p>In the command key, right-click the default string value where it says <strong class="nosep text-success">(Default)</strong> and select <strong class="text-info">Modify...</strong></p>
+                <p>In the Value data field, fill in the path to your VS Code executable from step 1, followed by a space and then <strong class="text-success">"%V"</strong>. In my example, the total string is <strong class="text-primary nosep">D:\Program Files\Microsoft VS Code\Code.exe "%V"</strong></p>
+                <p> <strong>Important:</strong> You should only wrap the %V in quotes. Any other quotes in this string may break its functionality.</p>
+                <p>Now your shiny new menu option should exist! Right-click inside of any folder and select the new option (labeled VS_Code by default) to open VS Code in that folder.</p>
+            </section>
+        </div>
+        
+        <a href="" id="extra"></a>
+        <div class="row">
+            <section class="col-12 bg-light p-2 my-4 rounded">
+                <h3>Extra Options: Make it more pretty!</h3>
+                
+                <img src="assets/extraOptions.png" alt="" class="fluid-img w-100 mb-2">
+                
+                <p>If you want your context menu to have an icon or better text, then we need to add some data to the VS_Code key directly. To start, <strong class="text-info">Modify...</strong> the default string to give the name of the menu option.</p>
+                <p>To add an icon to the context menu option, right-click and select <strong class="text-info">New &rarr; String Value</strong>. Give this value the name "Icon", and set its data to be the path to your VS Code executable.</p>
+
+            </section>
+        </div>
+
+
+
+    </main>
+</body>
+</html>
